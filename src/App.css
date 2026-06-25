@@ -1,276 +1,322 @@
-/* === VARIABLES DE COLOR === */
-        :root {
-            --turbus-green: #00a650; /* Verde característico */
-            --turbus-black: #111111; /* Negro */
-            --turbus-white: #ffffff; /* Blanco */
-            --turbus-bg: #f4f6f8;    /* Fondo claro para contraste */
-        }
+/* ==========================================================================
+   1. RESET GENERAL Y ELIMINACIÓN DE BORDES POR DEFECTO
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
 
-        /* === RESET BÁSICO === */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 
-        body {
-            background-color: var(--turbus-bg);
-            color: var(--turbus-black);
-            overflow-x: hidden;
-        }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: #f1f5f9; 
+  color: #1e293b;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-        /* === ANIMACIONES CSS === */
-        @keyframes slideDownHeader {
-            from { transform: translateY(-100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
+/* ==========================================================================
+   2. RESET DE CONTENEDORES DE VITE Y REACT (EDGE-TO-EDGE)
+   ========================================================================== */
+#root {
+  width: 100% !important;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: none !important;
+  text-align: left !important;
+}
 
-        @keyframes fadeInUpSection {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+/* ==========================================================================
+   3. CABECERA PREMIUM (HEADER) CON EFECTO FROSTED GLASS
+   ========================================================================== */
+header {
+  width: 100%;
+  background-color: rgba(13, 13, 13, 0.95); 
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #ffffff;
+  padding: 1.1rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 2px solid #2ecc71; 
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
 
-        @keyframes underlineGrow {
-            from { width: 0; }
-            to { width: 100%; }
-        }
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 
-        @keyframes buttonPulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 166, 80, 0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 0 15px 5px rgba(0, 166, 80, 0.2); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 166, 80, 0); }
-        }
+.logo span {
+  color: #2ecc71; 
+}
 
-        /* === ESTRUCTURA DEL HEADER (FLEXBOX) === */
-        header {
-            display: flex;
-            justify-content: space-between; /* Separa logo y navegación */
-            align-items: center;
-            background-color: var(--turbus-black);
-            color: var(--turbus-white);
-            padding: 20px 60px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            /* Animación de entrada del header */
-            animation: slideDownHeader 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-        }
+.topics {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
 
-        /* Izquierda: Nombre TurBus */
-        .logo {
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--turbus-green);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
+.topics a {
+  color: #94a3b8; 
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  padding: 0.3rem 0;
+}
 
-        .logo:hover {
-            transform: scale(1.05);
-        }
+.topics a:hover {
+  color: #2ecc71; 
+}
 
-        /* Derecha: Tópicos / Navegación */
-        nav.topics {
-            display: flex;
-            gap: 40px; /* Espacio entre los links del header */
-        }
+.topics a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #2ecc71;
+  transition: width 0.3s ease;
+}
 
-        nav.topics a {
-            color: var(--turbus-white);
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 600;
-            position: relative;
-            padding: 5px 0;
-            transition: color 0.3s ease;
-        }
+.topics a:hover::after {
+  width: 100%;
+}
 
-        nav.topics a:hover {
-            color: var(--turbus-green);
-        }
+/* ==========================================================================
+   4. MAQUETACIÓN DEL CONTENIDO PRINCIPAL (MAIN)
+   ========================================================================== */
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 1280px; 
+  margin: 2.5rem auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem; 
+}
 
-        /* Animación de subrayado en hover */
-        nav.topics a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0%;
-            height: 3px;
-            background-color: var(--turbus-green);
-            transition: width 0.3s ease;
-        }
+/* ==========================================================================
+   5. DISEÑO DE LAS TARJETAS Y CONTENIDO MARKDOWN (.informe-contenido)
+   ========================================================================== */
+.informe-contenido {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 
+              0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
 
-        nav.topics a:hover::after {
-            width: 100%;
-        }
+.informe-contenido:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 
+              0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
 
-        /* === ESTRUCTURA DEL MAIN === */
-        main {
-            display: flex;
-            flex-direction: column;
-            gap: 100px; /* Espacios grandes entre secciones según requerimiento */
-            padding: 80px 60px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+.informe-contenido h1, 
+.informe-contenido h2, 
+.informe-contenido h3 {
+  color: #0f172a;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
 
-        /* Estilo general de las secciones */
-        section {
-            background-color: var(--turbus-white);
-            border-radius: 20px;
-            padding: 60px 50px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
-            opacity: 0; /* Inicia invisible para la animación */
-            /* Animación de aparición hacia arriba */
-            animation: fadeInUpSection 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-        }
+.informe-contenido h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 
-        /* Retraso escalonado (stagger) para que aparezcan una por una */
-        section:nth-child(1) { animation-delay: 0.2s; border-top: 8px solid var(--turbus-green); }
-        section:nth-child(2) { animation-delay: 0.5s; border-left: 8px solid var(--turbus-black); }
-        /* La sección 3 invierte los colores para dar variedad usando la misma paleta */
-        section:nth-child(3) { 
-            animation-delay: 0.8s; 
-            background-color: var(--turbus-green); 
-            color: var(--turbus-white); 
-        }
+.informe-contenido h3 {
+  font-size: 1.3rem;
+  color: #1e293b;
+  margin-top: 1.8rem;
+  margin-bottom: 0.8rem;
+  border-left: 4px solid #2ecc71; 
+  padding-left: 0.75rem;
+}
 
-        h1, h2 {
-            margin-bottom: 25px;
-        }
+.informe-contenido p {
+  margin-bottom: 1.2rem;
+  line-height: 1.7;
+  font-size: 1.05rem;
+  color: #475569;
+}
 
-        p {
-            line-height: 1.8;
-            font-size: 18px;
-            margin-bottom: 35px;
-            color: #444;
-        }
+/* REPARACIÓN DE LISTAS: Restaura la alineación y sangrado original */
+.informe-contenido ul, 
+.informe-contenido ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-left: 0.5rem;
+  line-height: 1.7;
+}
 
-        section:nth-child(3) p, 
-        section:nth-child(3) h2 {
-            color: var(--turbus-white);
-        }
+.informe-contenido ul {
+  list-style-type: disc; /* Vuelven los puntos nativos alineados */
+}
 
-        .hero-title {
-            font-size: 48px;
-            color: var(--turbus-black);
-        }
+.informe-contenido ol {
+  list-style-type: decimal; /* Vuelven los números nativos alineados */
+}
 
-        .hero-title span {
-            color: var(--turbus-green);
-        }
+.informe-contenido li {
+  margin-bottom: 0.5rem;
+  color: #475569;
+  font-size: 1.05rem;
+}
 
-        /* Botones con animaciones */
-        .btn {
-            background-color: var(--turbus-black);
-            color: var(--turbus-white);
-            border: none;
-            padding: 16px 36px;
-            font-size: 18px;
-            font-weight: 700;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
+/* Aplica el color corporativo de forma segura con ::marker */
+.informe-contenido ul li::marker {
+  color: #2ecc71; 
+  font-size: 1.15em;
+}
 
-        .btn:hover {
-            background-color: var(--turbus-green);
-            animation: buttonPulse 1.5s infinite;
-        }
+.informe-contenido ol li::marker {
+  color: #2ecc71; 
+  font-weight: bold;
+}
 
-        /* === NUEVOS ESTILOS PARA EL INFORME (MARKDOWN) === */
-        .informe-contenido {
-            color: #444;
-        }
+/* ==========================================================================
+   6. TABLAS DE ALTO RENDIMIENTO (MATRIZ DE RIESGOS)
+   ========================================================================== */
+.informe-contenido table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 2rem 0;
+  font-size: 0.95rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 
+              0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  border: 1px solid #e2e8f0;
+}
 
-        .informe-contenido h3 {
-            color: var(--turbus-green);
-            margin-top: 30px;
-            margin-bottom: 15px;
-            font-size: 22px;
-        }
+.informe-contenido th, 
+.informe-contenido td {
+  padding: 1rem 1.25rem;
+  text-align: left;
+}
 
-        .code-block {
-            background-color: #282c34;
-            color: #abb2bf;
-            padding: 15px;
-            border-radius: 8px;
-            font-family: 'Courier New', Courier, monospace;
-            margin-bottom: 20px;
-            overflow-x: auto;
-        }
+.informe-contenido th {
+  background-color: #0f172a;
+  color: #ffffff;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+}
 
-        .img-placeholder {
-            width: 100%;
-            height: 300px;
-            background-color: #e9ecef;
-            border: 2px dashed #adb5bd;
-            border-radius: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #6c757d;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
+.informe-contenido td {
+  border-bottom: 1px solid #e2e8f0;
+  color: #334155;
+  font-weight: 500;
+}
 
-        /* Estilos para la Matriz de Riesgo */
-        table.matriz {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 30px 0;
-            background-color: white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
+.informe-contenido tr:last-child td {
+  border-bottom: none;
+}
 
-        table.matriz th, table.matriz td {
-            border: 1px solid #dee2e6;
-            padding: 15px;
-            text-align: center;
-            font-weight: 600;
-        }
+.informe-contenido tr:nth-child(even) {
+  background-color: #f8fafc;
+}
 
-        table.matriz th {
-            background-color: var(--turbus-black);
-            color: var(--turbus-white);
-        }
+/* ==========================================================================
+   7. BLOQUES DE CÓDIGO Y DE TERMINAL (PAYLOADS)
+   ========================================================================== */
+.informe-contenido code {
+  background-color: #f1f5f9;
+  color: #ef4444; 
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  font-family: 'Fira Code', 'Courier New', Courier, monospace;
+  font-size: 0.9em;
+  font-weight: 600;
+}
 
-        .riesgo-alto { background-color: #fd7e14; color: white; }
-        .riesgo-critico { background-color: #dc3545; color: white; }
+.informe-contenido pre {
+  background-color: #0f172a; 
+  padding: 1.25rem;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+  border: 1px solid #1e293b;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
 
-            background-color: var(--turbus-black);
-            color: var(--turbus-white);
-        }
+.informe-contenido pre code {
+  background-color: transparent;
+  color: #38bdf8; 
+  padding: 0;
+  font-size: 0.95rem;
+}
 
-        section:nth-child(3) .btn:hover {
-            background-color: var(--turbus-white);
-            color: var(--turbus-black);
-        }
+/* ==========================================================================
+   8. MARCOS PARA CAPTURAS DE PANTALLA
+   ========================================================================== */
+.informe-contenido img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 2rem auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  border: 4px solid #ffffff; 
+  outline: 1px solid #e2e8f0;
+  transition: transform 0.3s ease;
+}
 
-        /* La sección de Matriz tendrá un estilo distinto */
-        section:nth-child(3) { 
-            animation-delay: 0.8s; 
-            background-color: var(--turbus-white); 
-            color: var(--turbus-black); 
-            border-top: 8px solid #fd7e14;
-        }
-        
-        section:nth-child(3) p, 
-        section:nth-child(3) h2 {
-            color: var(--turbus-black);
-        }
+.informe-contenido img:hover {
+  transform: scale(1.01);
+}
 
-        /* === FOOTER === */
-        footer {
-            text-align: center;
-            padding: 40px;
-            background-color: var(--turbus-black);
-            color: var(--turbus-white);
-            margin-top: 50px;
-        }
+/* ==========================================================================
+   9. PIE DE PÁGINA (FOOTER)
+   ========================================================================== */
+footer {
+  background-color: #0d0d0d;
+  color: #64748b;
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+  width: 100%;
+  margin-top: auto;
+  border-top: 1px solid #1e293b;
+}
+
+footer p {
+  letter-spacing: 0.3px;
+}
