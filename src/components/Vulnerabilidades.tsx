@@ -1,4 +1,4 @@
-import React from 'react';
+
 import ReactMarkdown from 'react-markdown';
 // Importamos los 3 ataques reales desde tu carpeta de documentos
 import sqliMD from '../../docs_silgab/02_sqli_silgab.md?raw';

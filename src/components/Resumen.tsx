@@ -1,4 +1,4 @@
-import React from 'react';
+
 import ReactMarkdown from 'react-markdown';
 // Importamos el archivo Markdown real como texto plano usando Vite (?raw)
 import resumenMD from '../../docs_silgab/01_resumen_silgab.md?raw';

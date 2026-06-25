@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Resumen from './components/Resumen';
 import Vulnerabilidades from './components/Vulnerabilidades';
 import Matriz from './components/Matriz';

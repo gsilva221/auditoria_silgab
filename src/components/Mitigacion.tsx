@@ -1,4 +1,4 @@
-import React from 'react';
+
 import ReactMarkdown from 'react-markdown';
 // Importamos las políticas, controles y el plan de recuperación ante desastres reales
 import controlesMD from '../../docs_silgab/07_controles_silgab.md?raw';

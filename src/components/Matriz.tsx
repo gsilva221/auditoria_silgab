@@ -1,4 +1,4 @@
-import React from 'react';
+
 import ReactMarkdown from 'react-markdown';
 // Importamos los activos y la matriz de riesgos reales
 import activosMD from '../../docs_silgab/05_activos_silgab.md?raw';
