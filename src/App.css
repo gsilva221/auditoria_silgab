@@ -17,7 +17,7 @@ html, body {
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  background-color: #f1f5f9; 
+  background-color: #f1f5f9; /* Fondo de pantalla suave y moderno */
   color: #1e293b;
   min-height: 100vh;
   overflow-x: hidden;
@@ -44,7 +44,7 @@ body {
    ========================================================================== */
 header {
   width: 100%;
-  background-color: rgba(13, 13, 13, 0.95); 
+  background-color: rgba(13, 13, 13, 0.95); /* Negro corporativo traslúcido */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   color: #ffffff;
@@ -55,7 +55,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  border-bottom: 2px solid #2ecc71; 
+  border-bottom: 2px solid #2ecc71; /* Delgada línea verde de acento */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
@@ -70,7 +70,7 @@ header {
 }
 
 .logo span {
-  color: #2ecc71; 
+  color: #2ecc71; /* Verde neón de TurBus */
 }
 
 .topics {
@@ -80,7 +80,7 @@ header {
 }
 
 .topics a {
-  color: #94a3b8; 
+  color: #94a3b8; /* Gris suave por defecto */
   text-decoration: none;
   font-weight: 600;
   font-size: 0.95rem;
@@ -91,9 +91,10 @@ header {
 }
 
 .topics a:hover {
-  color: #2ecc71; 
+  color: #2ecc71; /* Ilumina en verde al pasar el mouse */
 }
 
+/* Línea animada debajo de los links */
 .topics a::after {
   content: '';
   position: absolute;
@@ -115,12 +116,12 @@ header {
 main {
   flex: 1;
   width: 100%;
-  max-width: 1280px; 
+  max-width: 1280px; /* Ancho de lectura óptimo y balanceado */
   margin: 2.5rem auto;
   padding: 0 2rem;
   display: flex;
   flex-direction: column;
-  gap: 3rem; 
+  gap: 3rem; /* Espacio generoso entre secciones del informe */
 }
 
 /* ==========================================================================
@@ -142,17 +143,27 @@ main {
               0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
+/* Títulos con tipografía moderna, jerarquía clara e interlineado reparado */
 .informe-contenido h1, 
 .informe-contenido h2, 
 .informe-contenido h3 {
   color: #0f172a;
   font-weight: 800;
   letter-spacing: -0.5px;
+  line-height: 1.25; /* Solución principal: Evita que los títulos se monten */
+}
+
+.informe-contenido h1 {
+  font-size: 2.4rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid #2ecc71; /* Línea de acento para el título principal */
 }
 
 .informe-contenido h2 {
   font-size: 1.8rem;
-  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.2rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -163,7 +174,7 @@ main {
   color: #1e293b;
   margin-top: 1.8rem;
   margin-bottom: 0.8rem;
-  border-left: 4px solid #2ecc71; 
+  border-left: 4px solid #2ecc71; /* Acento verde en subsecciones */
   padding-left: 0.75rem;
 }
 
@@ -174,38 +185,37 @@ main {
   color: #475569;
 }
 
-/* REPARACIÓN DE LISTAS: Restaura la alineación y sangrado original */
+/* Listas con viñetas elegantes restauradas */
 .informe-contenido ul, 
 .informe-contenido ol {
   margin-left: 1.5rem;
   margin-bottom: 1.5rem;
-  padding-left: 0.5rem;
   line-height: 1.7;
 }
 
 .informe-contenido ul {
-  list-style-type: disc; /* Vuelven los puntos nativos alineados */
+  list-style-type: none;
 }
 
-.informe-contenido ol {
-  list-style-type: decimal; /* Vuelven los números nativos alineados */
-}
-
-.informe-contenido li {
+/* Bullet personalizado con estilo de checklist de seguridad */
+.informe-contenido ul li {
+  position: relative;
+  padding-left: 1.5rem;
   margin-bottom: 0.5rem;
   color: #475569;
-  font-size: 1.05rem;
 }
 
-/* Aplica el color corporativo de forma segura con ::marker */
-.informe-contenido ul li::marker {
-  color: #2ecc71; 
-  font-size: 1.15em;
-}
-
-.informe-contenido ol li::marker {
-  color: #2ecc71; 
+.informe-contenido ul li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #2ecc71;
   font-weight: bold;
+}
+
+.informe-contenido ol li {
+  margin-bottom: 0.5rem;
+  color: #475569;
 }
 
 /* ==========================================================================
@@ -259,7 +269,7 @@ main {
    ========================================================================== */
 .informe-contenido code {
   background-color: #f1f5f9;
-  color: #ef4444; 
+  color: #ef4444; /* Rojo de consola para llamar la atención en payloads */
   padding: 0.2rem 0.5rem;
   border-radius: 6px;
   font-family: 'Fira Code', 'Courier New', Courier, monospace;
@@ -268,7 +278,7 @@ main {
 }
 
 .informe-contenido pre {
-  background-color: #0f172a; 
+  background-color: #0f172a; /* Terminal oscura profunda */
   padding: 1.25rem;
   border-radius: 12px;
   overflow-x: auto;
@@ -279,13 +289,13 @@ main {
 
 .informe-contenido pre code {
   background-color: transparent;
-  color: #38bdf8; 
+  color: #38bdf8; /* Azul cyan estilo terminal */
   padding: 0;
   font-size: 0.95rem;
 }
 
 /* ==========================================================================
-   8. MARCOS PARA CAPTURAS DE PANTALLA
+   8. MARCOS IMPECABLES PARA CAPTURAS DE PANTALLA
    ========================================================================== */
 .informe-contenido img {
   max-width: 100%;
@@ -294,7 +304,7 @@ main {
   margin: 2rem auto;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-  border: 4px solid #ffffff; 
+  border: 4px solid #ffffff; /* Efecto Polaroid físico */
   outline: 1px solid #e2e8f0;
   transition: transform 0.3s ease;
 }
